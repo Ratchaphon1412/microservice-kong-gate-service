@@ -1,0 +1,210 @@
+{
+    "createdUser": null,
+    "updatedUser": null,
+    "id": 2,
+    "name": "Version 0.0.1",
+    "kong_node_name": "kong",
+    "kong_node_url": "http://kong:8001",
+    "kong_version": "3.4.0",
+    "data": {
+        "services": [
+            {
+                "name": "Django",
+                "host": "192.168.1.108",
+                "tags": [],
+                "ca_certificates": null,
+                "created_at": 1693664562,
+                "updated_at": 1694008435,
+                "id": "05489252-bd10-43fc-849c-91cfd8ddbb64",
+                "write_timeout": 60000,
+                "port": 8023,
+                "tls_verify": null,
+                "path": "/",
+                "tls_verify_depth": null,
+                "client_certificate": null,
+                "enabled": true,
+                "connect_timeout": 60000,
+                "retries": 5,
+                "read_timeout": 60000,
+                "protocol": "http",
+                "extras": {
+                    "id": 8,
+                    "service_id": "05489252-bd10-43fc-849c-91cfd8ddbb64",
+                    "kong_node_id": "1",
+                    "description": null,
+                    "tags": null,
+                    "createdAt": "2023-09-02T14:22:42.000Z",
+                    "updatedAt": "2023-09-06T13:53:55.000Z",
+                    "createdUser": null,
+                    "updatedUser": null
+                }
+            },
+            {
+                "name": "Auth",
+                "host": "192.168.1.108",
+                "tags": [],
+                "ca_certificates": null,
+                "created_at": 1694009248,
+                "updated_at": 1694009248,
+                "id": "b4658978-0619-4fd1-a6ef-2d3e38448477",
+                "write_timeout": 60000,
+                "port": 8024,
+                "tls_verify": null,
+                "path": null,
+                "tls_verify_depth": null,
+                "client_certificate": null,
+                "enabled": true,
+                "connect_timeout": 60000,
+                "retries": 5,
+                "read_timeout": 60000,
+                "protocol": "http",
+                "extras": {
+                    "id": 10,
+                    "service_id": "b4658978-0619-4fd1-a6ef-2d3e38448477",
+                    "kong_node_id": "1",
+                    "description": null,
+                    "tags": null,
+                    "createdAt": "2023-09-06T14:07:28.000Z",
+                    "updatedAt": "2023-09-06T14:07:28.000Z",
+                    "createdUser": null,
+                    "updatedUser": null
+                }
+            }
+        ],
+        "routes": [
+            {
+                "name": "DjangoAPI",
+                "tags": null,
+                "path_handling": "v1",
+                "preserve_host": false,
+                "created_at": 1693664593,
+                "updated_at": 1693667876,
+                "id": "44df1f9f-b9b6-437c-8bac-8e5b6a6b93f1",
+                "destinations": null,
+                "protocols": [
+                    "http",
+                    "https"
+                ],
+                "paths": [
+                    "/django"
+                ],
+                "request_buffering": true,
+                "response_buffering": true,
+                "service": {
+                    "id": "05489252-bd10-43fc-849c-91cfd8ddbb64"
+                },
+                "hosts": null,
+                "regex_priority": 0,
+                "sources": null,
+                "headers": null,
+                "methods": [
+                    "GET"
+                ],
+                "https_redirect_status_code": 426,
+                "strip_path": true,
+                "snis": null
+            },
+            {
+                "name": "AuthAPI",
+                "tags": null,
+                "path_handling": "v1",
+                "preserve_host": false,
+                "created_at": 1694009329,
+                "updated_at": 1694010114,
+                "id": "d555f746-7173-41bb-ada8-3b2711ae4222",
+                "destinations": null,
+                "protocols": [
+                    "http",
+                    "https"
+                ],
+                "paths": [
+                    "/auth"
+                ],
+                "request_buffering": true,
+                "response_buffering": true,
+                "service": {
+                    "id": "b4658978-0619-4fd1-a6ef-2d3e38448477"
+                },
+                "hosts": null,
+                "regex_priority": 0,
+                "sources": null,
+                "headers": null,
+                "methods": null,
+                "https_redirect_status_code": 426,
+                "strip_path": true,
+                "snis": null
+            }
+        ],
+        "consumers": [
+            {
+                "created_at": 1693930655,
+                "updated_at": 1693930655,
+                "id": "eafe3f68-43a1-4e70-94ae-c0a8cff0b0fc",
+                "tags": [],
+                "username": "Frontend",
+                "custom_id": null,
+                "credentials": {
+                    "jwts": [
+                        {
+                            "tags": null,
+                            "key": "jkIGg90OvRW3v8ZJob9dPqR5Fi8JWDWy",
+                            "created_at": 1693990462,
+                            "id": "0667529f-5bfa-4a64-b039-32c0f8e0b9f4",
+                            "consumer": {
+                                "id": "eafe3f68-43a1-4e70-94ae-c0a8cff0b0fc"
+                            },
+                            "secret": "django-insecure-f(#d%+nuv*+hxpyk61a52$elfe0dd%5o9@42-q=6s89sxxidml",
+                            "rsa_public_key": null,
+                            "algorithm": "HS256"
+                        }
+                    ]
+                }
+            }
+        ],
+        "plugins": [
+            {
+                "name": "jwt",
+                "instance_name": null,
+                "tags": null,
+                "route": {
+                    "id": "44df1f9f-b9b6-437c-8bac-8e5b6a6b93f1"
+                },
+                "config": {
+                    "claims_to_verify": [
+                        "exp"
+                    ],
+                    "maximum_expiration": 0,
+                    "uri_param_names": [
+                        "jwt"
+                    ],
+                    "run_on_preflight": true,
+                    "header_names": [
+                        "Authorization"
+                    ],
+                    "secret_is_base64": false,
+                    "key_claim_name": "iss",
+                    "cookie_names": [],
+                    "anonymous": null
+                },
+                "service": null,
+                "created_at": 1693990552,
+                "updated_at": 1694009702,
+                "id": "b9b3bdcf-c8b6-4d29-a48e-8c97900cc435",
+                "consumer": null,
+                "enabled": true,
+                "protocols": [
+                    "grpc",
+                    "grpcs",
+                    "http",
+                    "https"
+                ]
+            }
+        ],
+        "acls": [],
+        "upstreams": [],
+        "certificates": [],
+        "snis": []
+    },
+    "createdAt": "2023-09-06T15:23:06.000Z",
+    "updatedAt": "2023-09-06T15:23:06.000Z"
+}
